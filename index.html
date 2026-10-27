@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><style>
-/* DCM FF PREMIUM BLACK & GOLD THEME */
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050609">
+<title>DCM FF Tournament</title>
+
+<style>
 :root {
   --gold: #ffd54a;
-  --gold2: #ffad00;
   --black: #050609;
-  --panel: #101116;
   --green: #00e88f;
 }
 
@@ -20,33 +23,31 @@ html {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(ellipse at top, #231700 0%, transparent 45%),
-    var(--black);
-  color: #f8fafc;
   font-family: Arial, sans-serif;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at top, #302000, transparent 45%),
+    var(--black);
 }
 
 header {
-  position: relative;
-  overflow: hidden;
+  text-align: center;
   padding: 35px 15px;
-  background: linear-gradient(135deg, #090909, #251800, #090909);
+  background: linear-gradient(135deg, #080808, #302000, #090909);
   border-bottom: 2px solid var(--gold);
   box-shadow: 0 5px 28px #ffbd0030;
 }
 
 .logo {
   color: var(--gold);
-  font-size: clamp(30px, 7vw, 48px);
+  font-size: clamp(34px, 7vw, 48px);
   font-weight: 1000;
   letter-spacing: 3px;
-  text-shadow: 0 0 18px #ffb70070;
+  animation: glow 3s infinite;
 }
 
 header h1 {
   color: #fff2b0;
-  font-weight: 1000;
   letter-spacing: 2px;
 }
 
@@ -56,7 +57,7 @@ header p {
 
 #bdtime {
   display: inline-block;
-  padding: 9px 15px;
+  padding: 10px 16px;
   border: 1px solid #b88b20;
   border-radius: 30px;
   background: #080808;
@@ -72,15 +73,13 @@ main {
 }
 
 .card {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(145deg, #151515, #090a0d);
+  background: linear-gradient(145deg, #171717, #090a0d);
   border: 1px solid #8f6b19;
   border-radius: 18px;
   padding: 22px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 28px #0008, inset 0 0 18px #ffc40008;
-  transition: transform .25s, border-color .25s;
+  box-shadow: 0 8px 28px #0008;
+  transition: .25s;
 }
 
 .card:hover {
@@ -91,36 +90,58 @@ main {
 h2 {
   color: var(--gold);
   font-weight: 900;
-  text-transform: uppercase;
 }
 
 p {
   line-height: 1.7;
-  color: #d6d6d6;
+  color: #ddd;
 }
 
-.btn, .btn2, .slot-btn {
-  transition: transform .2s, box-shadow .2s;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.btn {
-  background: linear-gradient(100deg, #00a85e, #00e88f);
-  color: #00180d;
-  border: 0;
-  box-shadow: 0 0 15px #00e88f30;
+.stat {
+  background: #0b0d0c;
+  border: 1px solid #51431f;
+  border-radius: 13px;
+  padding: 16px 10px;
+  text-align: center;
 }
 
-.btn2 {
-  background: linear-gradient(100deg, #a77700, #ffd54a);
-  color: #171000;
+.stat small {
+  display: block;
+  color: #ccc;
+  margin-bottom: 8px;
 }
 
-.btn:hover, .btn2:hover, .slot-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px #ffd54a50;
+.stat strong {
+  font-size: 22px;
+  color: var(--gold);
 }
 
-input, select, textarea {
+.prize {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px;
+  margin: 8px 0;
+  background: #0b0c0e;
+  border: 1px solid #51431f;
+  border-radius: 10px;
+}
+
+.prize strong {
+  color: var(--gold);
+}
+
+label {
+  display: block;
+  margin: 14px 0 7px;
+}
+
+input, select {
   width: 100%;
   padding: 13px;
   margin: 7px 0;
@@ -131,9 +152,29 @@ input, select, textarea {
   font-size: 16px;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus, select:focus {
   outline: 1px solid var(--gold);
-  border-color: var(--gold);
+}
+
+.btn, .slot-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 10px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 900;
+  cursor: pointer;
+  background: linear-gradient(100deg, #00894d, #00e88f);
+  color: #00180d;
+  transition: .2s;
+}
+
+.btn:hover, .slot-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px #00e88f50;
 }
 
 .slot-grid {
@@ -152,6 +193,14 @@ input:focus, select:focus, textarea:focus {
 
 .slot-box h3 {
   color: var(--gold);
+  margin: 0 0 10px;
+}
+
+.slot-status {
+  display: block;
+  margin: 10px 0;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .available {
@@ -159,7 +208,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .pending {
-  color: #ffd54a;
+  color: var(--gold);
 }
 
 .booked {
@@ -167,38 +216,43 @@ input:focus, select:focus, textarea:focus {
 }
 
 .slot-btn {
-  border: 1px solid #00e88f;
-  border-radius: 9px;
-  background: linear-gradient(100deg, #00894d, #00d981);
-  color: #00180d;
-  font-weight: 900;
-  padding: 12px 6px;
+  padding: 12px 5px;
+  margin-top: 5px;
 }
 
 .slot-btn:disabled {
   background: #30333b;
-  border-color: #555;
   color: #ddd;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.note {
+  font-size: 13px;
+  color: #aaa;
 }
 
 .status {
   color: var(--green);
+  text-align: center;
 }
 
 footer {
+  text-align: center;
+  padding: 25px 12px;
   border-top: 1px solid #7d601a;
   background: #070707;
   color: #aaa;
-  padding: 25px 12px;
 }
 
-@keyframes goldGlow {
-  0%, 100% { text-shadow: 0 0 5px #ffca2830; }
-  50% { text-shadow: 0 0 20px #ffca28a0; }
-}
-
-.logo {
-  animation: goldGlow 3s infinite;
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px #ffca2830;
+  }
+  50% {
+    text-shadow: 0 0 20px #ffca28a0;
+  }
 }
 
 @media (min-width: 650px) {
@@ -228,298 +282,190 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
-    scroll-behavior: auto !important;
     transition: none !important;
   }
-}
-  </style>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b14">
-<title>DCM FF Tournament</title>
-
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#080b14;
-  color:#fff;
-}
-header{
-  text-align:center;
-  padding:28px 15px;
-  background:linear-gradient(135deg,#101a36,#251044);
-  border-bottom:2px solid #ffd54a;
-}
-.logo{
-  font-size:34px;
-  font-weight:900;
-  color:#ffd54a;
-  letter-spacing:2px;
-}
-header p{color:#cbd5e1}
-main{max-width:760px;margin:22px auto;padding:14px}
-.card{
-  background:linear-gradient(145deg,#111827,#0d1220);
-  border:1px solid #344057;
-  border-radius:18px;
-  padding:20px;
-  margin-bottom:18px;
-  box-shadow:0 8px 25px #0005;
-}
-h1{text-align:center;font-size:27px}
-h2{color:#ffd54a;margin-top:0}
-p{color:#d1d5db;line-height:1.6}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-}
-.stat{
-  background:#080d19;
-  border:1px solid #283650;
-  border-radius:12px;
-  padding:15px 10px;
-  text-align:center;
-}
-.stat small{display:block;color:#aebbd0;margin-bottom:8px}
-.stat strong{font-size:21px;color:#ffd54a}
-.prize{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:12px;
-  margin:8px 0;
-  background:#0b1220;
-  border-radius:10px;
-  border:1px solid #293449;
-}
-.prize strong{color:#ffd54a}
-label{display:block;margin:14px 0 7px;color:#e5e7eb}
-input,select{
-  display:block;
-  width:100%;
-  padding:13px;
-  border-radius:9px;
-  border:1px solid #39465e;
-  background:#080d19;
-  color:white;
-  font-size:15px;
-}
-input:focus,select:focus{outline:1px solid #ffd54a}
-.btn{
-  display:block;
-  width:100%;
-  padding:15px;
-  margin-top:16px;
-  border:0;
-  border-radius:10px;
-  text-align:center;
-  text-decoration:none;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  background:#19b86a;
-  color:white;
-}
-.btn2{background:#5145e5}
-.note{font-size:13px;color:#9ca3af}
-.status{color:#54e69a;text-align:center}
-footer{text-align:center;color:#9ca3af;padding:25px}
-@media(max-width:420px){
-  .logo{font-size:29px}
-  .grid{gap:8px}
-  .stat strong{font-size:18px}
-  .card{padding:16px}
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="logo">DCM FF</div>
   <h1>TOURNAMENT</h1>
   <p>BATTLE • SKILL • VICTORY</p>
-  <p id="bdtime">Bangladesh Time</p>
+  <p id="bdtime">🇧🇩 Bangladesh Time</p>
 </header>
 
 <main>
 
-  <section class="card">
-    <h2>🔥 Welcome, Warriors!</h2>
-    <p>
-      Welcome to DCM FF Tournament! Join our community,
-      register your Squad, and get ready to compete.
-    </p>
-    <a class="btn"
-       href="https://chat.whatsapp.com/GJPUIisX5ERIoeSaazseZe?s=cl&p=i&mlu=4&ilr=4&iam=2"
-       target="_blank" rel="noopener">
-       JOIN WHATSAPP GROUP
-    </a>
-  </section>
+<section class="card">
+  <h2>🔥 Welcome, Warriors!</h2>
+  <p>
+    Welcome to DCM FF Tournament!
+    Join our community, register your Squad,
+    and get ready to compete.
+  </p>
 
-  <section class="card">
-    <h2>🏆 Tournament Details</h2>
+  <a class="btn"
+     href="https://chat.whatsapp.com/GJPUIisX5ERIoeSaazseZe?s=cl&p=i&mlu=4&ilr=4&iam=2"
+     target="_blank" rel="noopener">
+     JOIN WHATSAPP GROUP
+  </a>
+</section>
 
-    <div class="grid">
-      <div class="stat">
-        <small>💵 Entry Fee</small>
-        <strong>৳50</strong>
-      </div>
-      <div class="stat">
-        <small>💰 Prize Pool</small>
-        <strong>৳1,000</strong>
-      </div>
-      <div class="stat">
-        <small>🎮 Match Mode</small>
-        <strong>Squad</strong>
-      </div>
-      <div class="stat">
-        <small>🕘 Match Time</small>
-        <strong>9:00 PM</strong>
-      </div>
+<section class="card">
+  <h2>🏆 Tournament Details</h2>
+
+  <div class="grid">
+    <div class="stat">
+      <small>💵 Entry Fee</small>
+      <strong>৳30</strong>
     </div>
 
-    <p class="note">
-      Match time: Bangladesh time. Confirm the tournament
-      date and entry-fee details with the admin.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>🥇 Prize Distribution</h2>
-    <div class="prize">
-      <span>🥇 1st Place</span>
-      <strong>৳500</strong>
+    <div class="stat">
+      <small>💰 Prize Pool</small>
+      <strong>৳150</strong>
     </div>
-    <div class="prize">
-      <span>🥈 2nd Place</span>
-      <strong>৳300</strong>
+
+    <div class="stat">
+      <small>🎮 Match Mode</small>
+      <strong>Squad</strong>
     </div>
-    <div class="prize">
-      <span>🥉 3rd Place</span>
-      <strong>৳200</strong>
+
+    <div class="stat">
+      <small>🕘 Match Time</small>
+      <strong>9:00 PM</strong>
     </div>
-    <p class="status">Total Prize Pool: ৳1,000</p>
-  </section>
+  </div>
 
-  <section class="card">
-    <h2>🎮 Book Your Squad Slot</h2>
-    <p>Fill in your details and send a booking request to the admin on WhatsApp.</p>
-
-    <form id="bookingForm">
-      <label for="team">Team Name</label>
-      <input id="team" maxlength="50"
-        placeholder="Enter your team name" required>
-
-      <label for="player">Team Leader Name</label>
-      <input id="player" maxlength="50"
-        placeholder="Enter your game name" required>
-
-      <label for="uid">Team Leader Free Fire UID</label>
-      <input id="uid" inputmode="numeric" maxlength="30"
-        placeholder="Enter your UID" required>
-
-      <label for="slot">Requested Slot</label>
-      <select id="slot" required>
-        <option value="Slot 01">Slot 01</option>
-        <option value="Slot 02">Slot 02</option>
-        <option value="Slot 03">Slot 03</option>
-        <option value="Slot 04">Slot 04</option>
-        <option value="Slot 05">Slot 05</option>
-        <option value="Slot 06">Slot 06</option>
-        <option value="Slot 07">Slot 07</option>
-        <option value="Slot 08">Slot 08</option>
-        <option value="Slot 09">Slot 09</option>
-        <option value="Slot 10">Slot 10</option>
-      </select>
-
-      <label for="members">Teammates (optional)</label>
-      <input id="members" maxlength="200"
-        placeholder="Player 2, Player 3, Player 4">
-
-      <button class="btn" type="submit">
-        📲 BOOK SLOT ON WHATSAPP
-      </button>
-    </form>
-
-    <p class="note">
-      This sends a booking request only. Your slot is not confirmed
-      until the admin confirms it. Do not send payment before
-      confirming the details with the admin.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>📢 Tournament Rules</h2>
-    <p>• Follow the tournament schedule and admin instructions.</p>
-    <p>• Use the correct Free Fire UID.</p>
-    <p>• Confirm your slot and entry-fee details with the admin.</p>
-    <p>• Never share your password or OTP with anyone.</p>
-    <p class="status">● DCM FF Tournament Community</p>
-  </section>
-  <!-- DCM FF SLOT STATUS SYSTEM -->
-
-<style>
-.slot-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-}
-.slot-box{
-  background:#080d19;
-  border:1px solid #344057;
-  border-radius:13px;
-  padding:15px 10px;
-  text-align:center;
-}
-.slot-box h3{
-  margin:0 0 10px;
-  color:#ffd54a;
-}
-.slot-status{
-  display:block;
-  font-size:13px;
-  font-weight:bold;
-  margin:10px 0;
-}
-.available{color:#54e69a}
-.pending{color:#ffd54a}
-.booked{color:#ff7373}
-.slot-btn{
-  width:100%;
-  padding:10px 5px;
-  border:0;
-  border-radius:8px;
-  background:#19b86a;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-.slot-btn:disabled{
-  background:#343b49;
-  color:#c4cbd5;
-  cursor:not-allowed;
-}
-</style>
-
-<section class="card" id="slot-section">
-  <h2>🎮 Squad Slot Status</h2>
-  <p>Entry Fee: ৳50 per Squad booking</p>
-  <p>Prize Pool: ৳1,000</p>
-  <div class="slot-grid" id="slotGrid"></div>
   <p class="note">
-    Green = Available | Yellow = Pending | Red = Booked
+    Match time: Bangladesh time. Confirm the
+    tournament date and details with the admin.
   </p>
 </section>
 
-<script>
-// CHANGE THESE VALUES MANUALLY:
-// available = খালি
-// pending   = বুকিং অনুরোধ এসেছে
-// booked    = বুকিং নিশ্চিত
+<section class="card">
+  <h2>🥇 Prize Distribution</h2>
 
+  <div class="prize">
+    <span>🥇 1st Place</span>
+    <strong>৳75</strong>
+  </div>
+
+  <div class="prize">
+    <span>🥈 2nd Place</span>
+    <strong>৳45</strong>
+  </div>
+
+  <div class="prize">
+    <span>🥉 3rd Place</span>
+    <strong>৳30</strong>
+  </div>
+
+  <p class="status">Total Prize Pool: ৳150</p>
+</section>
+
+<section class="card">
+  <h2>🎮 Book Your Squad Slot</h2>
+  <p>Fill in your details and send a booking request on WhatsApp.</p>
+
+  <form id="bookingForm">
+
+    <label for="team">Team Name</label>
+    <input id="team" maxlength="50"
+           placeholder="Enter your team name" required>
+
+    <label for="player">Team Leader Name</label>
+    <input id="player" maxlength="50"
+           placeholder="Enter your game name" required>
+
+    <label for="uid">Team Leader Free Fire UID</label>
+    <input id="uid" inputmode="numeric" maxlength="30"
+           placeholder="Enter your UID" required>
+
+    <label for="slot">Requested Slot</label>
+    <select id="slot" required>
+      <option value="">Choose a slot</option>
+      <option>Slot 01</option>
+      <option>Slot 02</option>
+      <option>Slot 03</option>
+      <option>Slot 04</option>
+      <option>Slot 05</option>
+      <option>Slot 06</option>
+      <option>Slot 07</option>
+      <option>Slot 08</option>
+      <option>Slot 09</option>
+      <option>Slot 10</option>
+      <option>Slot 11</option>
+      <option>Slot 12</option>
+    </select>
+
+    <label for="members">Teammates (optional)</label>
+    <input id="members" maxlength="200"
+           placeholder="Player 2, Player 3, Player 4">
+
+    <button class="btn" type="submit">
+      📲 BOOK SLOT ON WHATSAPP
+    </button>
+  </form>
+
+  <p class="note">
+    This sends a booking request only. Your slot is not confirmed
+    until the admin confirms it. Do not send payment before
+    confirming the details with the admin.
+  </p>
+</section>
+
+<section class="card" id="slot-section">
+  <h2>🎮 Squad Slot Status</h2>
+  <p>Entry Fee: ৳30 per Squad booking</p>
+  <p>Prize Pool: ৳150</p>
+
+  <div class="slot-grid" id="slotGrid"></div>
+
+  <p class="note">
+    Green = Available | Yellow = Pending | Red = Booked
+  </p>
+  <p class="note">
+    Slot status must be updated manually by the admin.
+  </p>
+</section>
+
+<section class="card">
+  <h2>📢 Tournament Rules</h2>
+  <p>• Follow the tournament schedule and admin instructions.</p>
+  <p>• Use the correct Free Fire UID.</p>
+  <p>• Confirm your slot and entry-fee details with the admin.</p>
+  <p>• Never share your password or OTP with anyone.</p>
+  <p class="status">● DCM FF Tournament Community</p>
+</section>
+
+</main>
+
+<footer>
+  © 2026 DCM FF Tournament<br>
+  BATTLE • SKILL • VICTORY
+</footer>
+
+<script>
+// Bangladesh live time
+function updateTime() {
+  document.getElementById("bdtime").textContent =
+    "🇧🇩 Bangladesh Time: " +
+    new Intl.DateTimeFormat("en-BD", {
+      timeZone: "Asia/Dhaka",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true
+    }).format(new Date());
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+// 12 slots: available, pending, or booked
 const dcmSlots = [
   {id:1, status:"available"},
   {id:2, status:"available"},
@@ -532,94 +478,73 @@ const dcmSlots = [
   {id:9, status:"available"},
   {id:10, status:"available"},
   {id:11, status:"available"},
-  {id:12, status:"available"},
-  ];
+  {id:12, status:"available"}
+];
 
-function renderDCMSlots(){
+function sendSlotRequest(slotNumber) {
+  const message =
+    "DCM FF TOURNAMENT BOOKING REQUEST\n" +
+    "Requested Slot: " +
+    String(slotNumber).padStart(2, "0") + "\n" +
+    "Match: Squad\n" +
+    "Entry Fee: 30 Taka\n" +
+    "Prize Pool: 150 Taka\n" +
+    "Match Time: 9:00 PM Bangladesh Time\n\n" +
+    "Please confirm slot availability.";
+
+  const url =
+    "https://wa.me/8801637970424?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
+
+function renderDCMSlots() {
   const grid = document.getElementById("slotGrid");
-  if(!grid) return;
-
   grid.innerHTML = "";
 
   dcmSlots.forEach(slot => {
     const labels = {
-      available:"🟢 AVAILABLE",
-      pending:"🟡 PENDING",
-      booked:"🔴 BOOKED"
+      available: "🟢 AVAILABLE",
+      pending: "🟡 PENDING",
+      booked: "🔴 BOOKED"
     };
 
     const box = document.createElement("div");
     box.className = "slot-box";
 
     const title = document.createElement("h3");
-    title.textContent = "SLOT " +
-      String(slot.id).padStart(2,"0");
+    title.textContent =
+      "SLOT " + String(slot.id).padStart(2, "0");
 
     const status = document.createElement("span");
     status.className = "slot-status " + slot.status;
     status.textContent = labels[slot.status] || "UNKNOWN";
 
-    const btn = document.createElement("button");
-    btn.className = "slot-btn";
+    const button = document.createElement("button");
+    button.className = "slot-btn";
 
-    if(slot.status === "available"){
-      btn.textContent = "REQUEST SLOT";
-      btn.addEventListener("click", () => {
-        const message =
-          "DCM FF TOURNAMENT BOOKING REQUEST\n" +
-          "Requested Slot: " +
-          String(slot.id).padStart(2,"0") + "\n" +
-          "Match: Squad\n" +
-          "Entry Fee: 30 Taka\n" +
-          "Prize Pool: 150 Taka\n" +
-          "Match Time: 9:00 PM Bangladesh Time\n\n" +
-          "Please confirm slot availability.";
-
-        const url =
-          "https://wa.me/8801637970424?text=" +
-          encodeURIComponent(message);
-
-        window.open(url, "_blank");
-      });
+    if (slot.status === "available") {
+      button.textContent = "REQUEST SLOT";
+      button.addEventListener("click", () =>
+        sendSlotRequest(slot.id)
+      );
     } else {
-      btn.textContent =
+      button.textContent =
         slot.status === "pending" ? "PENDING" : "SLOT FULL";
-      btn.disabled = true;
+      button.disabled = true;
     }
 
-    box.append(title, status, btn);
+    box.append(title, status, button);
     grid.appendChild(box);
   });
 }
 
 renderDCMSlots();
-</script>
-<!-- END DCM FF SLOT STATUS SYSTEM -->
 
-</main>
-
-<footer>
-  © 2026 DCM FF Tournament<br>
-  BATTLE • SKILL • VICTORY
-</footer>
-
-<script>
-function updateTime(){
-  const now = new Date();
-  document.getElementById("bdtime").textContent =
-    "🇧🇩 Bangladesh Time: " +
-    new Intl.DateTimeFormat("en-BD", {
-      timeZone:"Asia/Dhaka",
-      hour:"2-digit",
-      minute:"2-digit",
-      second:"2-digit",
-      hour12:true
-    }).format(now);
-}
-updateTime();
-setInterval(updateTime, 1000);
-
-document.getElementById("bookingForm").addEventListener("submit", function(e){
+// Booking form -> WhatsApp
+document.getElementById("bookingForm")
+.addEventListener("submit", function(e) {
   e.preventDefault();
 
   const team = document.getElementById("team").value.trim();
@@ -649,4 +574,4 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
 </script>
 
 </body>
-</html>
+    </html>
