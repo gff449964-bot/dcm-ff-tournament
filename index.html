@@ -45,6 +45,65 @@ footer{text-align:center;color:#9ca3af;padding:25px}
     <p>Please read the rules and confirm tournament details with an admin before sending any payment. Never share your password or OTP.</p>
     <p class="status">● DCM FF Tournament Community</p>
   </section>
+  <section class="card">
+  <h2>🎮 Book Your Tournament Slot</h2>
+
+  <form id="bookingForm">
+    <p>Player Name</p>
+    <input id="player" required placeholder="Enter your game name"
+      style="width:100%;padding:12px;border-radius:8px">
+
+    <p>Free Fire UID</p>
+    <input id="uid" required placeholder="Enter your UID"
+      style="width:100%;padding:12px;border-radius:8px">
+
+    <p>Match Type</p>
+    <select id="mode" style="width:100%;padding:12px;border-radius:8px">
+      <option>Solo</option>
+      <option>Duo</option>
+      <option>Squad</option>
+    </select>
+
+    <p>Select Slot</p>
+    <select id="slot" style="width:100%;padding:12px;border-radius:8px">
+      <option>Slot 01</option>
+      <option>Slot 02</option>
+      <option>Slot 03</option>
+      <option>Slot 04</option>
+      <option>Slot 05</option>
+    </select>
+
+    <button type="submit" class="btn"
+      style="width:100%;border:0;cursor:pointer">
+      BOOK SLOT ON WHATSAPP
+    </button>
+  </form>
+</section>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit",
+function(e) {
+  e.preventDefault();
+
+  const player = document.getElementById("player").value.trim();
+  const uid = document.getElementById("uid").value.trim();
+  const mode = document.getElementById("mode").value;
+  const slot = document.getElementById("slot").value;
+
+  const message =
+    "DCM FF TOURNAMENT BOOKING%0A" +
+    "Player: " + encodeURIComponent(player) + "%0A" +
+    "Free Fire UID: " + encodeURIComponent(uid) + "%0A" +
+    "Match: " + encodeURIComponent(mode) + "%0A" +
+    "Requested Slot: " + encodeURIComponent(slot);
+
+  window.open(
+    "https://wa.me/8801637970424?text=" +
+    message.replace(/%0A/g, "%0A"),
+    "_blank"
+  );
+});
+</script>
 </main>
 <footer>© 2026 DCM FF Tournament</footer>
 <script>
