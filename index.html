@@ -227,6 +227,140 @@ footer{text-align:center;color:#9ca3af;padding:25px}
     <p>• Never share your password or OTP with anyone.</p>
     <p class="status">● DCM FF Tournament Community</p>
   </section>
+  <!-- DCM FF SLOT STATUS SYSTEM -->
+
+<style>
+.slot-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.slot-box{
+  background:#080d19;
+  border:1px solid #344057;
+  border-radius:13px;
+  padding:15px 10px;
+  text-align:center;
+}
+.slot-box h3{
+  margin:0 0 10px;
+  color:#ffd54a;
+}
+.slot-status{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin:10px 0;
+}
+.available{color:#54e69a}
+.pending{color:#ffd54a}
+.booked{color:#ff7373}
+.slot-btn{
+  width:100%;
+  padding:10px 5px;
+  border:0;
+  border-radius:8px;
+  background:#19b86a;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+.slot-btn:disabled{
+  background:#343b49;
+  color:#c4cbd5;
+  cursor:not-allowed;
+}
+</style>
+
+<section class="card" id="slot-section">
+  <h2>🎮 Squad Slot Status</h2>
+  <p>Entry Fee: ৳50 per Squad booking</p>
+  <p>Prize Pool: ৳1,000</p>
+  <div class="slot-grid" id="slotGrid"></div>
+  <p class="note">
+    Green = Available | Yellow = Pending | Red = Booked
+  </p>
+</section>
+
+<script>
+// CHANGE THESE VALUES MANUALLY:
+// available = খালি
+// pending   = বুকিং অনুরোধ এসেছে
+// booked    = বুকিং নিশ্চিত
+
+const dcmSlots = [
+  {id:1, status:"available"},
+  {id:2, status:"available"},
+  {id:3, status:"available"},
+  {id:4, status:"available"},
+  {id:5, status:"available"},
+  {id:6, status:"available"},
+  {id:7, status:"available"},
+  {id:8, status:"available"},
+  {id:9, status:"available"},
+  {id:10,status:"available"}
+];
+
+function renderDCMSlots(){
+  const grid = document.getElementById("slotGrid");
+  if(!grid) return;
+
+  grid.innerHTML = "";
+
+  dcmSlots.forEach(slot => {
+    const labels = {
+      available:"🟢 AVAILABLE",
+      pending:"🟡 PENDING",
+      booked:"🔴 BOOKED"
+    };
+
+    const box = document.createElement("div");
+    box.className = "slot-box";
+
+    const title = document.createElement("h3");
+    title.textContent = "SLOT " +
+      String(slot.id).padStart(2,"0");
+
+    const status = document.createElement("span");
+    status.className = "slot-status " + slot.status;
+    status.textContent = labels[slot.status] || "UNKNOWN";
+
+    const btn = document.createElement("button");
+    btn.className = "slot-btn";
+
+    if(slot.status === "available"){
+      btn.textContent = "REQUEST SLOT";
+      btn.addEventListener("click", () => {
+        const message =
+          "DCM FF TOURNAMENT BOOKING REQUEST\n" +
+          "Requested Slot: " +
+          String(slot.id).padStart(2,"0") + "\n" +
+          "Match: Squad\n" +
+          "Entry Fee: 50 Taka\n" +
+          "Prize Pool: 1000 Taka\n" +
+          "Match Time: 9:00 PM Bangladesh Time\n\n" +
+          "Please confirm slot availability.";
+
+        const url =
+          "https://wa.me/8801637970424?text=" +
+          encodeURIComponent(message);
+
+        window.open(url, "_blank");
+      });
+    } else {
+      btn.textContent =
+        slot.status === "pending" ? "PENDING" : "SLOT FULL";
+      btn.disabled = true;
+    }
+
+    box.append(title, status, btn);
+    grid.appendChild(box);
+  });
+}
+
+renderDCMSlots();
+</script>
+<!-- END DCM FF SLOT STATUS SYSTEM -->
 
 </main>
 
