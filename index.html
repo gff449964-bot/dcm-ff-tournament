@@ -1,5 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+/* DCM FF PREMIUM BLACK & GOLD THEME */
+:root {
+  --gold: #ffd54a;
+  --gold2: #ffad00;
+  --black: #050609;
+  --panel: #101116;
+  --green: #00e88f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at top, #231700 0%, transparent 45%),
+    var(--black);
+  color: #f8fafc;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 35px 15px;
+  background: linear-gradient(135deg, #090909, #251800, #090909);
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 5px 28px #ffbd0030;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: clamp(30px, 7vw, 48px);
+  font-weight: 1000;
+  letter-spacing: 3px;
+  text-shadow: 0 0 18px #ffb70070;
+}
+
+header h1 {
+  color: #fff2b0;
+  font-weight: 1000;
+  letter-spacing: 2px;
+}
+
+header p {
+  color: #ffe8a0;
+}
+
+#bdtime {
+  display: inline-block;
+  padding: 9px 15px;
+  border: 1px solid #b88b20;
+  border-radius: 30px;
+  background: #080808;
+  color: var(--gold);
+  font-weight: bold;
+}
+
+main {
+  width: 100%;
+  max-width: 950px;
+  margin: 24px auto;
+  padding: 14px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #151515, #090a0d);
+  border: 1px solid #8f6b19;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 28px #0008, inset 0 0 18px #ffc40008;
+  transition: transform .25s, border-color .25s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+h2 {
+  color: var(--gold);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+p {
+  line-height: 1.7;
+  color: #d6d6d6;
+}
+
+.btn, .btn2, .slot-btn {
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn {
+  background: linear-gradient(100deg, #00a85e, #00e88f);
+  color: #00180d;
+  border: 0;
+  box-shadow: 0 0 15px #00e88f30;
+}
+
+.btn2 {
+  background: linear-gradient(100deg, #a77700, #ffd54a);
+  color: #171000;
+}
+
+.btn:hover, .btn2:hover, .slot-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px #ffd54a50;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 7px 0;
+  border-radius: 10px;
+  border: 1px solid #51431f;
+  background: #08090d;
+  color: white;
+  font-size: 16px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 1px solid var(--gold);
+  border-color: var(--gold);
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.slot-box {
+  background: linear-gradient(145deg, #101610, #080b0a);
+  border: 1px solid #00c77a;
+  border-radius: 13px;
+  padding: 15px 10px;
+  text-align: center;
+}
+
+.slot-box h3 {
+  color: var(--gold);
+}
+
+.available {
+  color: #00f59b;
+}
+
+.pending {
+  color: #ffd54a;
+}
+
+.booked {
+  color: #ff626e;
+}
+
+.slot-btn {
+  border: 1px solid #00e88f;
+  border-radius: 9px;
+  background: linear-gradient(100deg, #00894d, #00d981);
+  color: #00180d;
+  font-weight: 900;
+  padding: 12px 6px;
+}
+
+.slot-btn:disabled {
+  background: #30333b;
+  border-color: #555;
+  color: #ddd;
+}
+
+.status {
+  color: var(--green);
+}
+
+footer {
+  border-top: 1px solid #7d601a;
+  background: #070707;
+  color: #aaa;
+  padding: 25px 12px;
+}
+
+@keyframes goldGlow {
+  0%, 100% { text-shadow: 0 0 5px #ffca2830; }
+  50% { text-shadow: 0 0 20px #ffca28a0; }
+}
+
+.logo {
+  animation: goldGlow 3s infinite;
+}
+
+@media (min-width: 650px) {
+  .slot-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  main {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .slot-grid {
+    gap: 8px;
+  }
+
+  .slot-box {
+    padding: 12px 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+  </style>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
