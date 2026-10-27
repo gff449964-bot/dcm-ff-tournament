@@ -298,8 +298,10 @@ const dcmSlots = [
   {id:7, status:"available"},
   {id:8, status:"available"},
   {id:9, status:"available"},
-  {id:10,status:"available"}
-];
+  {id:10, status:"available"},
+  {id:11, status:"available"},
+  {id:12, status:"available"},
+  ];
 
 function renderDCMSlots(){
   const grid = document.getElementById("slotGrid");
@@ -336,8 +338,8 @@ function renderDCMSlots(){
           "Requested Slot: " +
           String(slot.id).padStart(2,"0") + "\n" +
           "Match: Squad\n" +
-          "Entry Fee: 50 Taka\n" +
-          "Prize Pool: 1000 Taka\n" +
+          "Entry Fee: 30 Taka\n" +
+          "Prize Pool: 150 Taka\n" +
           "Match Time: 9:00 PM Bangladesh Time\n\n" +
           "Please confirm slot availability.";
 
@@ -402,8 +404,8 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
     "Match Mode: Squad\n" +
     "Requested Slot: " + slot + "\n" +
     "Teammates: " + (members || "Not provided") + "\n" +
-    "Entry Fee: 50 Taka\n" +
-    "Prize Pool: 1000 Taka\n" +
+    "Entry Fee: 30 Taka\n" +
+    "Prize Pool: 150 Taka\n" +
     "Match Time: 9:00 PM Bangladesh Time";
 
   const whatsappURL =
